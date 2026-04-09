@@ -1,0 +1,327 @@
+/* ========================================
+   COMMON STYLES - IMPORTED BY ALL COMPONENTS
+   ======================================== */
+
+/* ========================================
+   CSS VARIABLES & ROOT STYLES
+   ======================================== */
+:root {
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #fff;
+  --border: #e5e4e7;
+  --code-bg: #f4f3ec;
+  --accent: #aa3bff;
+  --accent-bg: rgba(170, 59, 255, 0.1);
+  --accent-border: rgba(170, 59, 255, 0.5);
+  --accent-dark: #8a2be2;
+  --social-bg: rgba(244, 243, 236, 0.5);
+  --shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --shadow-md: rgba(0, 0, 0, 0.08) 0 4px 12px;
+  --shadow-lg: rgba(0, 0, 0, 0.12) 0 12px 24px;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #9ca3af;
+    --text-h: #f3f4f6;
+    --bg: #16171d;
+    --border: #2e303a;
+    --code-bg: #1f2028;
+    --accent: #c084fc;
+    --accent-dark: #b469f5;
+    --accent-bg: rgba(192, 132, 252, 0.15);
+    --accent-border: rgba(192, 132, 252, 0.5);
+    --social-bg: rgba(47, 48, 58, 0.5);
+    --shadow: rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+    --shadow-md: rgba(0, 0, 0, 0.3) 0 4px 12px;
+    --shadow-lg: rgba(0, 0, 0, 0.4) 0 12px 24px;
+  }
+
+  #social .button-icon {
+    filter: invert(1) brightness(2);
+  }
+}
+
+/* ========================================
+   GLOBAL TYPOGRAPHY
+   ======================================== */
+body {
+  margin: 0;
+}
+
+#root {
+  width: 1126px;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  border-inline: 1px solid var(--border);
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+  @media (max-width: 1024px) {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+
+p {
+  margin: 0;
+}
+
+/* ========================================
+   FORM ELEMENTS
+   ======================================== */
+input,
+select {
+  transition: all 0.2s ease;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px var(--accent-bg) !important;
+}
+
+input::placeholder {
+  color: var(--text);
+  opacity: 0.5;
+}
+
+select option {
+  background: var(--bg);
+  color: var(--text-h);
+}
+
+/* ========================================
+   BUTTONS
+   ======================================== */
+button {
+  transition: all 0.3s ease;
+  font-family: var(--sans);
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(170, 59, 255, 0.4) !important;
+}
+
+button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn {
+  padding: 14px 32px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(170, 59, 255, 0.3);
+  outline: none;
+}
+
+.btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 100%);
+  box-shadow: 0 8px 24px rgba(170, 59, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-container {
+  animation: fadeIn 0.3s ease;
+}
+
+.result-card {
+  animation: slideUp 0.3s ease;
+  background: linear-gradient(135deg, var(--accent-bg) 0%, rgba(192, 132, 252, 0.05) 100%);
+  border: 1.5px solid var(--accent-border);
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  margin-top: 12px;
+}
+
+/* ========================================
+   LOADING & STATE STYLES
+   ======================================== */
+.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* ========================================
+   PAGE STYLES
+   ======================================== */
+.page {
+  background: var(--bg);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0 0 16px;
+  text-align: left;
+}
+
+/* ========================================
+   RESULT CARD STYLES
+   ======================================== */
+.result-error-title {
+  color: var(--accent);
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.result-error-text {
+  color: var(--text);
+  margin: 8px 0 0;
+  font-size: 14px;
+}
+
+.result-title {
+  font-size: 12px;
+  color: var(--accent);
+  margin: 0 0 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.result-value {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-h);
+}
+
+.result-unit {
+  font-size: 16px;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.badge {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ========================================
+   APP SHELL & RESPONSIVE
+   ======================================== */
+.app-shell {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f3ff 0%, #fff 100%);
+  font-family: var(--sans);
+  padding-bottom: 40px;
+}
+
+@media (max-width: 768px) {
+  button {
+    padding: 12px 24px !important;
+    font-size: 14px;
+  }
+  
+  input,
+  select {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
